@@ -4,7 +4,6 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,25 +14,24 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+        python-version: '3.10'
 
       - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_TOKEN}}
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_TOKEN}}
 
       - name: Build and Release to DockerHub
         env:
-          NAME: ${{secrets.DOCKERHUB_USERNAME}}
-          REPO: pythoncicid  # Docker Hub 레포지토리 이름
-        run: |
-          docker build -t $REPO .
-          docker tag $REPO:latest $NAME/$REPO:latest
-          docker push $NAME/$REPO:latest
-
+            NAME: ${{secrets.DOCKERHUB_USERNAME}}
+            REPO: pythoncicid  # Docker Hub 레포지토리 이름
+            run: |
+              docker build -t $REPO .
+              docker tag $REPO:latest $NAME/$REPO:latest
+              docker push $NAME/$REPO:latest
