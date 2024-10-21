@@ -1,5 +1,4 @@
 name: pythoncicid
-
 on:
   push:
     branches: ["main"]
@@ -34,5 +33,7 @@ jobs:
           NAME: ${{secrets.DOCKERHUB_USERNAME}}
           REPO: pythoncicid  # Docker Hub 레포지토리 이름
         run: |
-          docker build -t $NAME/$REPO:latest .
+          docker build -t $REPO .
+          docker tag $REPO:latest $NAME:$REPO:latest
           docker push $NAME/$REPO:latest
+
