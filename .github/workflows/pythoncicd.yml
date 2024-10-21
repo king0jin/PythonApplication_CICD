@@ -1,4 +1,4 @@
-name: pythoncicd
+name: pythoncicid
 on: 
     push:
         branches: [main]
