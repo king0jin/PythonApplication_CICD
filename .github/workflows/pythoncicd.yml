@@ -3,7 +3,7 @@ name: pythoncicd
 on: 
     push:
         branches: [main]
-    full_request:
+    pull_request:
         branches: [main]
 
 jobs:
