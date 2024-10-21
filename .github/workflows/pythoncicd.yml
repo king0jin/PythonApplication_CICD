@@ -31,7 +31,7 @@ jobs:
         - name: build and release to DockerHub
           env: 
               NAME: ${{ secrets.DOCKERHUB_USERNAME }}
-              REPO: pythoncicd
+              REPO: pythoncicid
           run: |
               docker build -t $REPO .
               docker tag $REPO:latest $NAME/$REPO:latest
