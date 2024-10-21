@@ -1,6 +1,6 @@
 name: pythoncicid
 
-on: 
+on:
   push:
     branches: ["main"]
   pull_request:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'       
+          python-version: '3.10'
 
       - name: Install Dependencies
         run: |
@@ -30,7 +30,7 @@ jobs:
           password: ${{secrets.DOCKERHUB_TOKEN}}
 
       - name: Build and Release to DockerHub
-        env: 
+        env:
           NAME: ${{secrets.DOCKERHUB_USERNAME}}
           REPO: pythoncicid  # Docker Hub 레포지토리 이름
         run: |
